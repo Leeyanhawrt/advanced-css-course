@@ -8,14 +8,17 @@ Dark green: #28b485
 */
 
 /* Universal Reset */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
+/* Using 62.5% as default font size is 16px 10/16 = 62.5% 10 is the desired font size to make working with rems easier */
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
 
 body {
@@ -25,6 +28,8 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
+
+  box-sizing: border-box;
 }
 
 .header {
@@ -151,6 +156,7 @@ body {
   border-radius: 10rem;
   transition: all 0.2s;
   position: relative;
+  font-size: 1.6rem;
 }
 
 .btn:hover {
