@@ -4,6 +4,7 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /* Universal Reset */
 *,
@@ -46,24 +47,24 @@ body {
 
   /* Define the corners of the polygon clockwise from top left. Can use Clippy to take a shape and it provides function values */
   /* clip-path: polygon(50% 0, 100% 100%, 0 100%);  Would create a triangle */
-}
 
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
-}
+  &__logo {
+    height: 3.5rem;
+  }
 
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 .heading-primary {
@@ -73,31 +74,31 @@ body {
 
   /* Remove vertical jerking that happens with animations */
   backface-visibility: hidden;
-}
 
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
 
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
 
-  /* 
-    animation-delay: 3s; 
-    animation-iteration-count: 3;
-  */
-}
+    /* 
+      animation-delay: 3s; 
+      animation-iteration-count: 3;
+    */
+  }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.74rem;
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
 
-  animation: moveInRight 1s ease-out;
+    animation: moveInRight 1s ease-out;
+  }
 }
 
 @keyframes moveInLeft {
@@ -145,60 +146,63 @@ body {
 }
 
 /* Psuedo class "link" is when it's an anchor tag */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  position: relative;
-  font-size: 1.6rem;
-}
 
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem;
 
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+    &:hover {
+      transform: translateY(-0.3rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-.btn--white {
-  background-color: $color-white;
-  color: $color-grey-dark;
-}
+      /* Controls the after pseudo element created in .btn::after */
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+  }
 
-.btn::after {
-  /* Creating an after pseudo element to hide behind the main element */
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
 
-  transition: all 0.4s;
-}
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
 
-.btn--white::after {
-  background-color: white;
-}
+    &::after {
+      background-color: white;
+    }
+  }
 
-/* Controls the after pseudo element created in .btn::after */
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
+  &::after {
+    /* Creating an after pseudo element to hide behind the main element */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  /* Applies the properties of 0% keyframe before animation starts */
-  animation-fill-mode: backwards;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* Applies the properties of 0% keyframe before animation starts */
+    animation-fill-mode: backwards;
+  }
 }
