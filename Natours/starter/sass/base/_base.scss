@@ -9,7 +9,26 @@
 
 /* Using 62.5% as default font size is 16px 10/16 = 62.5% 10 is the desired font size to make working with rems easier */
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // Want 1 rem = 10px 10/16 = 62.5%
+
+  @include respond(tab-land) {
+    // Width < 1200px?
+    font-size: 56.25%; // Want 1 rem = 9px 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    // Width < 900px?
+    font-size: 50%; // Want 1 rem = 8px 8/16 = 50%
+  }
+
+  @include respond(phone) {
+    // Width < 600px?
+    font-size: 30%; //Want 1 rem = 4.8px 4.8/16 = 30%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // Want 1 rem = 12px 12/16 = 75%
+  }
 }
 
 body {
