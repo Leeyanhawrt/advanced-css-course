@@ -5,13 +5,23 @@
       rgba($color-primary-light, 0.8),
       rgba($color-primary-dark, 0.8)
     ),
-    url(../img/hero.jpg);
+    url(../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
   position: relative;
 
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  // Because image is 1200 pixels, even if using a 2x screen any device less than 600px will display 1200px fine, so only using high density when screen is greater than 600px and 2x
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)
+      ),
+      url(../img/hero.jpg);
+  }
 
   /* Define the corners of the polygon clockwise from top left. Can use Clippy to take a shape and it provides function values */
   /* clip-path: polygon(50% 0, 100% 100%, 0 100%);  Would create a triangle */
