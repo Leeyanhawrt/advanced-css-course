@@ -16,6 +16,11 @@
   /* Define the corners of the polygon clockwise from top left. Can use Clippy to take a shape and it provides function values */
   /* clip-path: polygon(50% 0, 100% 100%, 0 100%);  Would create a triangle */
 
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
   &__logo-box {
     position: absolute;
     top: 4rem;
